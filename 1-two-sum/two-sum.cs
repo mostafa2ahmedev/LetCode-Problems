@@ -3,19 +3,16 @@ public class Solution
     public  int[] TwoSum(int[] nums, int target)//[3, 2, 4]    6 
     {
         
-      
-        for (int i = 0; i < nums.Length - 1; i++)  
+      Dictionary<int, int> map = new Dictionary<int, int>();
+       int Complement= 0;
+        for (int i = 0; i < nums.Length; i++)  
         {
-
-            for (int j = i + 1; j < nums.Length; j++)
-            {
-                if (nums[i] + nums[j] == target)
-                    return new int[] { i, j };
-
-
-            }
-
+            Complement = target - nums[i];
+            if (map.ContainsKey(Complement)) {
+                return new int[] { map[Complement], i };        
         }
-        return  new int[0];
+           map[nums[i]]=i ;   //Key:number    value>index
+        }
+   return new int[] {};
     }
 }
