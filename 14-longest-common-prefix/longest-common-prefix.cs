@@ -1,35 +1,36 @@
-public class Solution
-{
-    public  string LongestCommonPrefix(string[] strs)
+    public class Solution
     {
-
-        string minmumString = strs[0];
-
-        for (int i = 0; i < strs.Length; i++)
+        public string LongestCommonPrefix(string[] strs)
         {
-            if (strs[i].Length < minmumString.Length)
-                minmumString = strs[i];
-        }
-        string result = string.Empty;
-   
-        for (int i = 0; i < strs.Length; i++)
-        {
-            string word = strs[i]; //flower
-        
-            for (int j = 0; j < minmumString.Length; j++)
+
+            string minmumString = strs[0];
+
+            for (int i = 0; i < strs.Length; i++)
             {
-                if (word[j] != minmumString[j])
-                    break;
-                else {
-                    result += minmumString[j]; //fl
-                }
-            
-
-
+                if (strs[i].Length < minmumString.Length)
+                    minmumString = strs[i];
             }
-            minmumString = result;
-            result = string.Empty;
+            StringBuilder result = new StringBuilder("");
+
+            for (int i = 0; i < strs.Length; i++)
+            {
+                string word = strs[i]; //flower
+
+                for (int j = 0; j < minmumString.Length; j++)
+                {
+                    if (word[j] != minmumString[j])
+                        break;
+                    else
+                    {
+                        result.Append(minmumString[j]); //fl
+                    }
+
+
+
+                }
+                minmumString = result.ToString();
+                result = result.Clear();
+            }
+            return minmumString;
         }
-        return minmumString;
     }
-}
